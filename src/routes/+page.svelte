@@ -2,7 +2,8 @@
   import { apiKey } from './apiKey.js';
   import axios from 'axios';
 
-  let code = '';
+  let inputCode;
+  let instruction = 'todo';
 
   async function refactorCode() {
     try {
@@ -14,9 +15,9 @@
           'Authorization': `Bearer ${apiKey}`
         },
         data: {
-          "model": "text-davinci-edit-001",
-          "input": "my input",
-          "instruction": "instruction"
+          "model": 'text-davinci-edit-001',
+          "input": inputCode,
+          "instruction": instruction
         }
       });
       console.log(response.data);
@@ -24,13 +25,12 @@
       console.error(error);
     }
   }
-
-  refactorCode();
 </script>
 
 <div class="container">
   <h1>One Click Code Refactor</h1>
-  <textarea bind:value={code}></textarea>
+  <p>Copy paste your code here</p>
+  <textarea bind:value={inputCode}></textarea>
   <button on:click={refactorCode}>Refactor Code</button>
 </div>
 
@@ -49,7 +49,11 @@
   h1 {
     text-align: center;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-top: 0;
   }
 
   textarea {
