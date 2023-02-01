@@ -15,7 +15,7 @@
           'Authorization': `Bearer ${apiKey}`
         },
         data: {
-          "model": 'text-davinci-edit-001',
+          "model": 'code-davinci-edit-001',
           "input": inputCode,
           "instruction": instruction
         }
